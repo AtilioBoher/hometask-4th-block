@@ -2,6 +2,7 @@ package com.solvd.carina.demo;
 
 import com.solvd.carina.demo.api.products.GetProduct;
 import com.solvd.carina.demo.api.products.PostProduct;
+import com.solvd.carina.demo.api.products.PutProduct;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import io.restassured.path.json.JsonPath;
@@ -17,7 +18,7 @@ public class APICourseTest implements IAbstractTest {
         getProduct.setIndex(2);
         Response response = getProduct.callAPIExpectSuccess();
         getProduct.validateResponseAgainstSchema("api/products/_get/rs.schema");
-        System.out.println("############### " + JsonPath.from(response.asString()).getString("description"));
+        System.out.println("I can read the json file using JsonPath: id=" + JsonPath.from(response.asString()).getString("id"));
     }
 
     @Test
@@ -27,5 +28,16 @@ public class APICourseTest implements IAbstractTest {
         postProduct.setProperties("api/products/product.properties");
         postProduct.callAPIExpectSuccess();
         postProduct.validateResponse();
+    }
+
+    @Test
+    @MethodOwner(owner = "Atilio")
+    public void putProductTest() {
+        PutProduct putProduct = new PutProduct();
+        putProduct.setIndex(1);
+        putProduct.setProperties("api/products/product.properties");
+        putProduct.callAPIExpectSuccess();
+        putProduct.validateResponseAgainstSchema("api/products/_put/rs.schema");
+        putProduct.validateResponse();
     }
 }
