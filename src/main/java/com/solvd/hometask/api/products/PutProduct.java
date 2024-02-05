@@ -1,4 +1,4 @@
-package com.solvd.carina.demo.api.products;
+package com.solvd.hometask.api.products;
 
 import com.zebrunner.carina.api.AbstractApiMethodV2;
 import com.zebrunner.carina.api.annotation.Endpoint;

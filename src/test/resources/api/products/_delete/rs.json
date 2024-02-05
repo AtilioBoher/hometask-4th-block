@@ -1,0 +1,15 @@
+{
+  "id": "type:Integer",
+  "title": "type:String",
+  "description": "type:String",
+  "price": 549,
+  "discountPercentage": 12.96,
+  "rating": 4.69,
+  "stock": 94,
+  "brand": "type:String",
+  "category": "type:String",
+  "thumbnail": "type:String",
+  "images": "skip",
+  "isDeleted": true,
+  "deletedOn": "predicate:datePredicate"
+}

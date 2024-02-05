@@ -5,7 +5,7 @@
   "stock": "type:Integer",
   "rating": 4.69,
   "images": "skip",
-  "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+  "thumbnail": "type:String",
   <#if description??> "description": "${description}"</#if>,
   "brand": "type:String",
   "category": "type:String"
