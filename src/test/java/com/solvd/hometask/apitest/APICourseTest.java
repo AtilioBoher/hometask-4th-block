@@ -1,14 +1,12 @@
-package com.solvd.hometask.api;
+package com.solvd.hometask.apitest;
 
-import com.solvd.hometask.api.products.DeleteProduct;
-import com.solvd.hometask.api.products.GetProduct;
-import com.solvd.hometask.api.products.PostProduct;
-import com.solvd.hometask.api.products.PutProduct;
+import com.solvd.hometask.apitest.products.DeleteProduct;
+import com.solvd.hometask.apitest.products.GetProduct;
+import com.solvd.hometask.apitest.products.PostProduct;
+import com.solvd.hometask.apitest.products.PutProduct;
 import com.zebrunner.carina.api.apitools.validation.JsonComparatorContext;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import java.time.LocalDate;
