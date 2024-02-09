@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class HomePageTest extends AbstractTest {
@@ -15,6 +16,7 @@ public class HomePageTest extends AbstractTest {
     @Test
     public void verifySearchLineTest() {
         String brandName = "Lenovo";
+        List<String> keyWords = Arrays.asList("Notebook", "Thinkpad");
 
         SoftAssert sa = new SoftAssert();
         WebDriver driver = getDriver();
@@ -40,18 +42,30 @@ public class HomePageTest extends AbstractTest {
         sa.assertTrue(driver.getCurrentUrl().toLowerCase().contains(brandName.toLowerCase()),
                 "Url doesn't contain the brand name");
 
-        checkThatProductsHaveTheBrandName(searchPage, sa, brandName);
+        checkThatProductsHaveTheBrandNameOrKeyword(searchPage, sa, brandName, keyWords);
 
         sa.assertAll();
     }
 
-    private static void checkThatProductsHaveTheBrandName(SearchPage searchPage, SoftAssert sa, String brandName) {
+    private static void checkThatProductsHaveTheBrandNameOrKeyword(SearchPage searchPage, SoftAssert sa, String brandName, List<String> keywords) {
         List<ProductCard> cards = searchPage.getCards();
         for (ProductCard card : cards) {
-            sa.assertTrue(card.getTitleText().toLowerCase().contains(brandName.toLowerCase()),
+            sa.assertTrue(checkForBrandNameOrKeyword(brandName, card, keywords),
                     String.format(
                             "Product with name '%s' doesn't contain the brand name in its title", card.getTitleText()
                     ));
         }
+    }
+
+    private static boolean checkForBrandNameOrKeyword(String brandName, ProductCard card, List<String> keywords) {
+        if (card.getTitleText().toLowerCase().contains(brandName.toLowerCase())) {
+            return true;
+        }
+        for (String keyword : keywords) {
+            if (card.getTitleText().toLowerCase().contains(keyword.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

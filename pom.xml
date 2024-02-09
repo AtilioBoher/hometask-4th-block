@@ -5,10 +5,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.solvd</groupId>
-	<artifactId>api-test</artifactId>
+	<artifactId>fourth-block-homework</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-	<name>API test for solvd-laba automation course</name>
+	<name>Test for the 4th block of solvd-laba automation course</name>
 	<url>http://solvd.com</url>
 
 	<properties>
