@@ -4,8 +4,11 @@ import com.solvd.hometask.mobiletest.saucelabs.common.LoginPageBase;
 import com.solvd.hometask.mobiletest.saucelabs.common.MainPageBase;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import java.util.List;
 
 public class SauceLabsTest implements IAbstractTest {
 
@@ -22,11 +25,13 @@ public class SauceLabsTest implements IAbstractTest {
 
     @Test()
     @MethodOwner(owner = "Atilio")
-    public void testMainPage() {
+    public void testMainPagePrices() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         MainPageBase mainPage = loginPage.login();
-
-
+        List<String> productTagPrices = mainPage.getAllPriceTags();
+        for (String price : productTagPrices) {
+            Assert.assertTrue(price.contains("$"), String.format("Price %s, doesn't contain the dollar sign", price));
+        }
     }
 
 }
