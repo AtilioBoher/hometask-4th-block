@@ -14,4 +14,13 @@ public abstract class LoginPageBase extends AbstractPage {
     public abstract boolean isUserPasswordInputFieldPresent();
 
     public abstract boolean isLoginBtnPresent();
+
+    public abstract MainPageBase clickLoginBtn();
+
+    public abstract void typeUserName(String name);
+
+    public abstract void typeUserPassword(String password);
+
+    public abstract MainPageBase login();
+
 }

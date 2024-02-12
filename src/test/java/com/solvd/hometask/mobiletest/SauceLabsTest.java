@@ -1,6 +1,7 @@
 package com.solvd.hometask.mobiletest;
 
 import com.solvd.hometask.mobiletest.saucelabs.common.LoginPageBase;
+import com.solvd.hometask.mobiletest.saucelabs.common.MainPageBase;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.annotations.Test;
@@ -19,5 +20,13 @@ public class SauceLabsTest implements IAbstractTest {
         sa.assertAll();
     }
 
+    @Test()
+    @MethodOwner(owner = "Atilio")
+    public void testMainPage() {
+        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
+        MainPageBase mainPage = loginPage.login();
+
+
+    }
 
 }
