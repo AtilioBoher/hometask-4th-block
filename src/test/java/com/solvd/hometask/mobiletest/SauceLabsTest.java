@@ -28,8 +28,8 @@ public class SauceLabsTest implements IAbstractTest {
     public void testMainPagePrices() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         MainPageBase mainPage = loginPage.login();
-        List<String> productTagPrices = mainPage.getAllPriceTags();
-        for (String price : productTagPrices) {
+        List<String> productPrices = mainPage.getAllPrices();
+        for (String price : productPrices) {
             Assert.assertTrue(price.contains("$"), String.format("Price %s, doesn't contain the dollar sign", price));
         }
     }

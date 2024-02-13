@@ -10,8 +10,5 @@ public abstract class MainPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract List<String> getAllPriceTags();
-
-    public abstract String getPriceTag();
-
+    public abstract List<String> getAllPrices();
 }
